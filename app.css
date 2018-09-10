@@ -1,0 +1,171 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#title {
+  flex: 1;
+  height: 40px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-family: Chalkduster, fantasy;
+  font-weight: lighter;
+  font-size: 25px;
+}
+
+img {
+  height: 40px;
+  width: 40px;
+  float: left;
+  margin: 15px;
+  margin-top: -5px;
+}
+
+
+#writing {
+  flex: 1;
+  background-color: lightgreen;
+  height: 50px;
+  text-align: center;
+  color: white;
+  padding-top: 35px;
+  font-size: 15px;
+  font-family: Arial, sans-serif;
+  font-weight: lighter
+}
+
+#container1 {
+  height: 500px;
+  width: auto;
+  background-color: beige;
+  display: flex;
+  flex-direction: row;
+}
+
+#container1 div {
+   display: flex;
+   min-height: 0;
+}
+
+.this-week-box {
+  width: 30%;
+  border: 1px #ccc solid;
+}
+
+.todo-list-box {
+  width: 40%;
+  border: 1px #ccc solid;
+  justify-content: center;
+  align-items: center;
+}
+
+ .todo-list {
+  border: 1px #ccc solid;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-list-header {
+  justify-content: center;
+  padding: 10px;
+  font-size: 20px;
+  background-color: gray;
+
+}
+
+.date {
+  padding: 5px;
+  font-size: 13px;
+}
+
+.add-todos {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.add-todo-button {
+  width: 20%;
+  margin: 15px;
+  border-radius: 5px;
+  
+}
+
+.todo-list-input {
+  background-color: beige;
+  border: none;
+  height: 30px;
+  width: 70%;
+  margin: 5px;
+  padding: 5px 10px;
+  font-size: 20px;
+}
+
+.todo-list-items {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 10px;
+}
+
+li {
+  list-style: none;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: row wrap;
+  align-items: center;
+  
+}
+
+.checkbox {
+ flex: .5;
+ 
+}
+
+.todo-text {
+  flex: 3;
+ 
+}
+
+.delete-todos-button {
+  flex: 1;
+  width: 15%;
+  margin: 10px;
+  border-radius: 5px;
+
+}
+
+.input-box {
+  width: 30%;
+  border: 1px #ccc solid;
+}
+
+#container2 {
+  flex: 3;
+  background-color: orange;
+  height: 500px;
+}
+
+#container3 {
+  flex: 1;
+  background-color: lightblue;
+  height: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/*/*/
