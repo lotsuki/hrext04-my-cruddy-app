@@ -9,40 +9,40 @@
 
 $(document).ready(function() {
 
-  // $(".todo-list").on("keypress", function(event) {
-  //   if(event.which === 13) {
-  //     console.log('hi')
-  //   }
-  // });
+  $(".todo-list-input").on("keypress", function(event) {
+    if(event.which === 13) {
+      let addTodoText = $(".todo-list-input").val();
+      let inputKey = 'todo';
 
-  $(".add-todo-button").on("click", function() {
-    let addTodoText = $(".todo-list-input").val();
-    let inputKey = 'todo';
+      if(addTodoText === "") {
+        return;
+       } 
+        localStorage.setItem(inputKey, addTodoText);
+        let newLi = '<li class="new-todo" data-storage-key="' + inputKey + '"><input type="checkbox" class="checkbox">' + " " + '<span class="todo-text">' + addTodoText + '</span><button type="button" class="delete-todos-button">Delete</button></li>';
+        $(".todo-list-items").append(newLi);
+        
+        
+        localStorage.removeItem($(".todo-list-input").val()); 
+        $(".todo-list-input").val(""); 
+       }
 
-    if(addTodoText === "") {
-      return;
-     } 
+    $(".delete-todos-button").on("click", function () {
+      $(this).closest('li').fadeOut('slow', function(){
+        $(this).remove();
+      });
+    });
 
-    localStorage.setItem(inputKey, addTodoText);
-    let newLi = '<li class="new-todo" data-storage-key="' + inputKey + '"><input type="checkbox" class="checkbox">' + " " + '<span class="todo-text">' + addTodoText + '</span><button type="button" class="delete-todos-button">Delete</button></li>';
-    $(".todo-list-items").append(newLi);
-    localStorage.removeItem($(".todo-list-input").val()); 
-    $(".todo-list-input").val(""); 
-
-    // $(".delete-todos-button").on("click", function () {
-    //   $(this).closest('li').fadeOut('slow', function(){
-    //     $(this).remove();
-    //   });
-
+     
      $(".checkbox").on("click", function() {
-        var thisClass = $(this).siblings(".todo-text")
-        thisClass.replaceWith(thisClass.text().strike())
-
-       //console.log(.closest($(".new-todo .todo-text").text()))
-     });
-
-     //function to toggle list
-  });
+      let currentTodo = $(this).siblings(".todo-text");
+        if($(this).prop("checked")) {    
+          $(currentTodo).css("text-decoration-line", "line-through");
+          return;
+        }  
+          $(currentTodo).css("text-decoration-line", "none");
+          return; 
+    });
+   });
  });
 
 
@@ -108,7 +108,34 @@ $(document).ready(function() {
 
 
 
+//$(".add-todo-button").on("click", function() {
+  //   let addTodoText = $(".todo-list-input").val();
+  //   let inputKey = 'todo';
 
+  //   if(addTodoText === "") {
+  //     return;
+  //    } 
+
+  //   localStorage.setItem(inputKey, addTodoText);
+  //   let newLi = '<li class="new-todo" data-storage-key="' + inputKey + '"><input type="checkbox" class="checkbox">' + " " + '<span class="todo-text">' + addTodoText + '</span><button type="button" class="delete-todos-button">Delete</button></li>';
+  //   $(".todo-list-items").append(newLi);
+  //   localStorage.removeItem($(".todo-list-input").val()); 
+  //   $(".todo-list-input").val(""); 
+
+  //   // $(".delete-todos-button").on("click", function () {
+  //   //   $(this).closest('li').fadeOut('slow', function(){
+  //   //     $(this).remove();
+  //   //   });
+
+  //    $(".checkbox").on("click", function() {
+  //       var thisClass = $(this).siblings(".todo-text")
+  //       thisClass.replaceWith(thisClass.text().strike())
+
+  //      //console.log(.closest($(".new-todo .todo-text").text()))
+  //    });
+
+  //    //function to toggle list
+  // });
 
 
 

@@ -81,17 +81,15 @@ img {
 }
 
 .add-todos {
-  display: flex;
-  flex-direction: row;
+ display: flex;
+
 
 }
 
-.add-todo-button {
-  width: 20%;
-  margin: 15px;
-  border-radius: 5px;
+.todo-list-input {
   
 }
+
 
 .todo-list-input {
   background-color: beige;
@@ -130,8 +128,8 @@ li {
 }
 
 .delete-todos-button {
-  flex: 1;
-  width: 15%;
+  
+  width: 50px;
   margin: 10px;
   border-radius: 5px;
 
