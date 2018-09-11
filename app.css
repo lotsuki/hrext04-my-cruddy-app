@@ -1,6 +1,16 @@
+html,
+body,
+.full-screen {
+  height: 100%;
+  width: 100%;
+}
+
+/** { min-height: 0 }
+*/
 body {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 #title {
@@ -11,6 +21,7 @@ body {
   font-family: Chalkduster, fantasy;
   font-weight: lighter;
   font-size: 25px;
+  
 }
 
 img {
@@ -19,6 +30,7 @@ img {
   float: left;
   margin: 15px;
   margin-top: -5px;
+  
 }
 
 
@@ -31,7 +43,8 @@ img {
   padding-top: 35px;
   font-size: 15px;
   font-family: Arial, sans-serif;
-  font-weight: lighter
+  font-weight: lighter;
+  
 }
 
 #container1 {
@@ -40,16 +53,19 @@ img {
   background-color: beige;
   display: flex;
   flex-direction: row;
+  
 }
 
 #container1 div {
    display: flex;
    min-height: 0;
+   max-height: inherit;
 }
 
 .this-week-box {
   width: 30%;
   border: 1px #ccc solid;
+  
 }
 
 .todo-list-box {
@@ -57,14 +73,16 @@ img {
   border: 1px #ccc solid;
   justify-content: center;
   align-items: center;
+  max-height: inherit;
 }
 
  .todo-list {
   border: 1px #ccc solid;
   width: 80%;
-  height: 80%;
+  height: 40%;
   display: flex;
   flex-direction: column;
+  min-height: 0;
 }
 
 .todo-list-header {
@@ -78,57 +96,71 @@ img {
 .date {
   padding: 5px;
   font-size: 13px;
+  max-width: inherit;
 }
 
 .add-todos {
+ height: 30px;
+ max-width: inherit;
  display: flex;
+ margin: 5px;
+ padding: 5px 10px;
 
-
-}
-
-.todo-list-input {
-  
 }
 
 
 .todo-list-input {
   background-color: beige;
+  width: 100%;
   border: none;
-  height: 30px;
-  width: 70%;
-  margin: 5px;
-  padding: 5px 10px;
   font-size: 20px;
+  flex: 2;
+  
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 0;
+  max-width: inherit;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .todo-list-items {
-  display: flex;
-  flex-direction: column;
+  flex: 4;
   margin: 0;
-  padding: 10px;
+  align-self: stretch;
+  min-width: 0;
+  /*max-width: inherit;*/
+  /*margin: 5px;*/
+  overflow-x: hidden;
+  overflow-y: auto;
+ 
 }
 
 li {
-  list-style: none;
-  font-family: Arial, sans-serif;
   display: flex;
-  flex-direction: row wrap;
+  flex-direction: row nowrap;
+  list-style: none;
+  width: 100%;
+  font-family: Arial, sans-serif;
   align-items: center;
-  
+  align-self: stretch; 
+  /*min-height: 0;*/
 }
 
 .checkbox {
- flex: .5;
- 
+  
 }
 
 .todo-text {
-  flex: 3;
- 
+ flex: 4;
 }
 
 .delete-todos-button {
-  
   width: 50px;
   margin: 10px;
   border-radius: 5px;

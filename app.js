@@ -18,7 +18,7 @@ $(document).ready(function() {
         return;
        } 
         localStorage.setItem(inputKey, addTodoText);
-        let newLi = '<li class="new-todo" data-storage-key="' + inputKey + '"><input type="checkbox" class="checkbox">' + " " + '<span class="todo-text">' + addTodoText + '</span><button type="button" class="delete-todos-button">Delete</button></li>';
+        let newLi = '<li class="new-todo" data-storage-key="' + inputKey + '"><input type="checkbox" class="checkbox">' + "  " + '<span class="todo-text">' + addTodoText + '</span><button type="button" class="delete-todos-button">Delete</button></li>';
         $(".todo-list-items").append(newLi);
         
         
