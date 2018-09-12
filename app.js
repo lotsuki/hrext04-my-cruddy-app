@@ -8,6 +8,8 @@
 
 
 $(document).ready(function() {
+ 
+ 
 
   $(".todo-list-input").on("keypress", function(event) {
     if(event.which === 13) {
@@ -25,6 +27,11 @@ $(document).ready(function() {
         $(".todo-list-input").val(""); 
        }
       
+       $(function() {
+    $( ".todo-list-items" ).sortable();
+    $( ".todo-list-items" ).disableSelection();
+     });
+    
 
     $(".delete-todos-button").on("click", function () {
       $(this).closest('li').fadeOut('slow', function(){
@@ -37,12 +44,11 @@ $(document).ready(function() {
       let currentTodo = $(this).siblings(".todo-text");
         if($(this).prop("checked")) {    
            $(currentTodo).css("text-decoration-line", "line-through");
-           var thisLi = $(this)
+           var thisLi = $(this);
            function moveToBottom() {
              $(thisLi).closest('li').appendTo(".todo-list-items")
-           }
-
-           setTimeout(moveToBottom, 500)
+           };
+           setTimeout(moveToBottom, 500);
            // $(this).fadeOut('slow', function(){
            //  var thisLi = $(this).closest('li')
            //  var checkbox = '<input type="checkbox" class="checkbox">'
