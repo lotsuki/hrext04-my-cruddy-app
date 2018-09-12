@@ -1,9 +1,11 @@
+
+
 html,
 body,
 .full-screen {
   height: 100%;
   width: 100%;
-}
+}*/
 
 /** { min-height: 0 }
 */
@@ -11,6 +13,12 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
+  position:relative;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 #title {
@@ -36,11 +44,13 @@ img {
 
 #writing {
   flex: 1;
+  justify-content: center;
+  align-content: center;
   background-color: lightgreen;
   height: 50px;
   text-align: center;
   color: white;
-  padding-top: 35px;
+  padding: 20px;
   font-size: 15px;
   font-family: Arial, sans-serif;
   font-weight: lighter;
@@ -79,7 +89,7 @@ img {
  .todo-list {
   border: 1px #ccc solid;
   width: 80%;
-  height: 40%;
+  height: 70%;
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -149,6 +159,7 @@ li {
   font-family: Arial, sans-serif;
   align-items: center;
   align-self: stretch; 
+
   /*min-height: 0;*/
 }
 
@@ -158,12 +169,14 @@ li {
 
 .todo-text {
  flex: 4;
+ cursor: pointer;
 }
 
 .delete-todos-button {
   width: 50px;
   margin: 10px;
   border-radius: 5px;
+  cursor: pointer;
 
 }
 
@@ -172,10 +185,72 @@ li {
   border: 1px #ccc solid;
 }
 
+.container2-header {
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  padding: 50px;
+  font-family: fantasy;
+}
+
 #container2 {
-  flex: 3;
   background-color: orange;
-  height: 500px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  height: auto;
+}
+
+#container2 div {
+  background-color: purple;
+  height: 250px;
+  width: 250px;
+  margin: 40px;
+  padding: 20px;
+  flex: 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: flex-start;
+  align-items: flex-start;
+
+}
+
+#container2 div h4 {
+  margin: 5px;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 2px black solid;
+  align-self: center;
+}
+
+.list-wrapper {
+  display: flex;
+  flex: 0 0 auto;
+  background-color: purple;
+  max-height: inherit;
+  margin: 3px; 
+  justify-content: flex-start;
+  align-self: flex-start;
+  align-items: flex-start;
+
+ 
+}
+
+.new-list-input {
+  background-color: purple;
+  border: none;
+  font-size: 20px;
+  width: 100%;
+  
+}
+
+.container3-header {
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  padding: 50px;
+  font-family: fantasy;
 }
 
 #container3 {
@@ -184,6 +259,52 @@ li {
   height: 100px;
 }
 
+.space {
+  height: 10px;
+}
+
+
+/*.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 0;
+  max-width: inherit;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.todo-list-items {
+  flex: 4;
+  margin: 0;
+  align-self: stretch;
+  min-width: 0;
+  /*max-width: inherit;*/
+  /*margin: 5px;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+.add-todos {
+ height: 30px;
+ max-width: inherit;
+ display: flex;
+ margin: 5px;
+ padding: 5px 10px;
+
+}
+
+
+.todo-list-input {
+  background-color: beige;
+  width: 100%;
+  border: none;
+  font-size: 20px;
+  flex: 2;
+  
+}
+ 
+}*/
 
 
 
@@ -196,6 +317,4 @@ li {
 
 
 
-
-
-*/*/*/
+*/*/

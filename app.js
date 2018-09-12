@@ -20,11 +20,11 @@ $(document).ready(function() {
         localStorage.setItem(inputKey, addTodoText);
         let newLi = '<li class="new-todo" data-storage-key="' + inputKey + '"><input type="checkbox" class="checkbox">' + "  " + '<span class="todo-text">' + addTodoText + '</span><button type="button" class="delete-todos-button">Delete</button></li>';
         $(".todo-list-items").append(newLi);
-        
-        
+       
         localStorage.removeItem($(".todo-list-input").val()); 
         $(".todo-list-input").val(""); 
        }
+      
 
     $(".delete-todos-button").on("click", function () {
       $(this).closest('li').fadeOut('slow', function(){
@@ -36,10 +36,23 @@ $(document).ready(function() {
      $(".checkbox").on("click", function() {
       let currentTodo = $(this).siblings(".todo-text");
         if($(this).prop("checked")) {    
-          $(currentTodo).css("text-decoration-line", "line-through");
-          return;
-        }  
+           $(currentTodo).css("text-decoration-line", "line-through");
+           var thisLi = $(this)
+           function moveToBottom() {
+             $(thisLi).closest('li').appendTo(".todo-list-items")
+           }
+
+           setTimeout(moveToBottom, 500)
+           // $(this).fadeOut('slow', function(){
+           //  var thisLi = $(this).closest('li')
+           //  var checkbox = '<input type="checkbox" class="checkbox">'
+           //  $(this).closest('li').appendTo(".todo-list-items")
+           //  $(thisLi).prepend(checkbox)
+           //  });
+          
+        }  else {
           $(currentTodo).css("text-decoration-line", "none");
+        }
           return; 
     });
    });
