@@ -193,9 +193,6 @@ img {
  cursor: pointer;
 }
 
-.todo-text.checked {
-  text-decoration: line-through;
-}
 
 .delete-todos-button {
   width: 50px;
@@ -222,25 +219,55 @@ img {
   background-color: orange;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: center;
   height: auto;
   max-width: inherit;
 }
 
-#container2 div {
-  background-color: purple;
+.life-list1 {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: stretch;
+  align-items: stretch;
+  background-color: white;
   height: 250px;
   width: 250px;
   margin: 40px;
+}
+
+.life-list2 {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: stretch;
+  align-items: stretch;
+  background-color: white;
+  height: 250px;
+  width: 250px;
+  margin: 40px;
+}
+
+.life-list3 {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: stretch;
+  align-items: stretch;
+  background-color: white;
+  height: 250px;
+  width: 250px;
+  margin: 40px;
+}
+
+/*#container2 div {
+
   padding: 20px;
   flex: 0 0;
-  display: flex;
-  flex-direction: column;
+
+
   justify-content: center;
   align-content: flex-start;
-  align-items: flex-start;
 
-}
+
+}*/
 
 #container2 div h4 {
   margin: 5px;
@@ -250,28 +277,53 @@ img {
   align-self: center;
 }
 
-.new-list-item-wrapper {
+.life-list-wrapper {
   display: flex;
-  flex: 0 0 auto;
-  background-color: purple;
-  max-height: inherit;
+  flex-flow: column nowrap;
+  justify-content: space-between;
   max-width: inherit;
-  margin: 0;
-  padding: 0;
-  justify-content: flex-start;
-  align-self: flex-start;
-  align-items: flex-start;
+ /* margin: 0;
+  padding: 0;*/
 }
 
 .new-list-ul {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 0;
+  padding: 10px;
+
+}
+
+.add-input-wrapper {
+  margin: 5px;
 
 }
 
 .new-list-input {
-  background-color: purple;
+  background-color: white;
   border: none;
   font-size: 20px;
   width: 100%;
+  color: black;
+  padding: 10px;
+  margin: 0;
+
+
+}
+
+.new-list-item {
+  display: flex;
+  flex-flow: row nowrap;
+  list-style: none;
+  padding: 5px;
+
+}
+
+.new-list-text {
+  flex: 2;
+}
+
+.delete-list-item-button {
 
 }
 
