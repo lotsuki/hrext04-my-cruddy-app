@@ -5,11 +5,12 @@
 //<input type="text" class="user-input-title" placeholder="Enter the Title">
 //<textarea class="user-input-body" placeholder="Enter the body of text"></textarea>
 
+//create objects to store list items and methods
+//create reusable functions
+
 
 
 $(document).ready(function() {
- 
- 
 
   $(".todo-list-input").on("keypress", function(event) {
     if(event.which === 13) {
@@ -18,50 +19,78 @@ $(document).ready(function() {
 
       if(addTodoText === "") {
         return;
-       } 
-        localStorage.setItem(inputKey, addTodoText);
-        let newLi = '<li class="new-todo" data-storage-key="' + inputKey + '"><input type="checkbox" class="checkbox">' + "  " + '<span class="todo-text">' + addTodoText + '</span><button type="button" class="delete-todos-button">Delete</button></li>';
-        $(".todo-list-items").append(newLi);
-       
-        localStorage.removeItem($(".todo-list-input").val()); 
-        $(".todo-list-input").val(""); 
        }
-      
-       $(function() {
-    $( ".todo-list-items" ).sortable();
-    $( ".todo-list-items" ).disableSelection();
-     });
-    
+       // '<input type="checkbox" class="checkbox">'
+        localStorage.setItem(inputKey, addTodoText);
+        let newLi = '<li class="new-todo" data-storage-key="' + inputKey + '"><span class="todo-text">' + addTodoText + '</span><button type="button" class="delete-todos-button">Delete</button></li>';
 
-    $(".delete-todos-button").on("click", function () {
-      $(this).closest('li').fadeOut('slow', function(){
-        $(this).remove();
-      });
-    });
-
-     
-     $(".checkbox").on("click", function() {
-      let currentTodo = $(this).siblings(".todo-text");
-        if($(this).prop("checked")) {    
-           $(currentTodo).css("text-decoration-line", "line-through");
-           var thisLi = $(this);
-           function moveToBottom() {
-             $(thisLi).closest('li').appendTo(".todo-list-items")
-           };
-           setTimeout(moveToBottom, 500);
-           // $(this).fadeOut('slow', function(){
-           //  var thisLi = $(this).closest('li')
-           //  var checkbox = '<input type="checkbox" class="checkbox">'
-           //  $(this).closest('li').appendTo(".todo-list-items")
-           //  $(thisLi).prepend(checkbox)
-           //  });
-          
-        }  else {
-          $(currentTodo).css("text-decoration-line", "none");
+        if($(".new-todo .todo-text").css("text-decoration-line") == "line-through") {
+          var closestLi = $(".todo-text").closest("li")
+          $("new-todo").insertBefore(closestLi);
+          return;
         }
-          return; 
+          $(".todo-list-items").append(newLi);
+
+        localStorage.removeItem($(".todo-list-input").val());
+        $(".todo-list-input").val("");
+       }
+
+       $(function() {
+        $( ".todo-list-items" ).sortable();
+        $( ".todo-list-items" ).disableSelection();
+         });
+
+    $(".delete-todos-button").unbind().click(function() {
+          var confirmDelete = confirm("Delete Item?")
+          if(confirmDelete) {
+            $(this).closest('li').fadeOut('slow', function(){
+              $(this).remove();
+              return;
+            });
+          }
+           return false;
+        });
+
+    $(".todo-text").unbind().dblclick (function() { //unbind so function only urns once, look up unbind()
+      if($(this).css("text-decoration-line") == "line-through") {
+        $(this).css("text-decoration-line", "none");
+        return; //have to return function or else nothing happens
+      }
+        $(this).css("text-decoration-line", "line-through");
+        var thisLi = $(this).closest("li");
+          function moveToBottom() {
+            $(thisLi).appendTo(".todo-list-items")
+          };
+           return setTimeout(moveToBottom, 500);
     });
+
+    // $(".new-todo").on("dblclick", function() {
+    //   $(this).css("highlight")
+    //   $(".todo-list-items").prepend(this)
+    //   return;
+    // })
+
+
+
+
+    //  $(".checkbox").on("click", function() {
+    //   let currentTodo = $(this).siblings(".todo-text");
+    //     if($(this).prop("checked")) {
+    //        $(currentTodo).css("text-decoration-line", "line-through");
+    //        var thisLi = $(this);
+    //        function moveToBottom() {
+    //          $(thisLi).closest('li').appendTo(".todo-list-items")
+    //        };
+    //        setTimeout(moveToBottom, 500);
+
+    //     }  else {
+    //       $(currentTodo).css("text-decoration-line", "none");
+    //     }
+    //       return;
+    // });
    });
+
+
  });
 
 
@@ -133,13 +162,13 @@ $(document).ready(function() {
 
   //   if(addTodoText === "") {
   //     return;
-  //    } 
+  //    }
 
   //   localStorage.setItem(inputKey, addTodoText);
   //   let newLi = '<li class="new-todo" data-storage-key="' + inputKey + '"><input type="checkbox" class="checkbox">' + " " + '<span class="todo-text">' + addTodoText + '</span><button type="button" class="delete-todos-button">Delete</button></li>';
   //   $(".todo-list-items").append(newLi);
-  //   localStorage.removeItem($(".todo-list-input").val()); 
-  //   $(".todo-list-input").val(""); 
+  //   localStorage.removeItem($(".todo-list-input").val());
+  //   $(".todo-list-input").val("");
 
   //   // $(".delete-todos-button").on("click", function () {
   //   //   $(this).closest('li').fadeOut('slow', function(){

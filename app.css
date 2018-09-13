@@ -14,7 +14,7 @@ body {
   flex-direction: column;
   height: 100%;
   width: 100%;
-  position:relative;
+  position:absolute;
 }
 
 * {
@@ -29,7 +29,7 @@ body {
   font-family: Chalkduster, fantasy;
   font-weight: lighter;
   font-size: 25px;
-  
+
 }
 
 img {
@@ -38,7 +38,7 @@ img {
   float: left;
   margin: 15px;
   margin-top: -5px;
-  
+
 }
 
 
@@ -54,16 +54,15 @@ img {
   font-size: 15px;
   font-family: Arial, sans-serif;
   font-weight: lighter;
-  
+
 }
 
 #container1 {
   height: 500px;
   width: auto;
-  background-color: beige;
   display: flex;
   flex-direction: row;
-  
+
 }
 
 #container1 div {
@@ -75,7 +74,7 @@ img {
 .this-week-box {
   width: 30%;
   border: 1px #ccc solid;
-  
+
 }
 
 .todo-list-box {
@@ -89,16 +88,21 @@ img {
  .todo-list {
   border: 1px #ccc solid;
   width: 80%;
-  height: 70%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   min-height: 0;
 }
 
 .todo-list-header {
-  justify-content: center;
+  height: auto;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  margin: 0;
   padding: 10px;
-  font-size: 20px;
   background-color: gray;
 
 }
@@ -107,25 +111,31 @@ img {
   padding: 5px;
   font-size: 13px;
   max-width: inherit;
+  align-self: center;
+}
+
+.todo-list-title {
+  font-size: 20px;
+  color: white;
+  align-self: center;
+
 }
 
 .add-todos {
- height: 30px;
  max-width: inherit;
  display: flex;
  margin: 5px;
- padding: 5px 10px;
+ padding: 10px;
 
 }
 
 
 .todo-list-input {
-  background-color: beige;
   width: 100%;
   border: none;
   font-size: 20px;
   flex: 2;
-  
+  padding: 10px;
 }
 
 .wrapper {
@@ -142,34 +152,49 @@ img {
 .todo-list-items {
   flex: 4;
   margin: 0;
+  padding: 0;
   align-self: stretch;
   min-width: 0;
   /*max-width: inherit;*/
   /*margin: 5px;*/
   overflow-x: hidden;
   overflow-y: auto;
- 
+
 }
 
-li {
+.new-todo {
   display: flex;
   flex-direction: row nowrap;
   list-style: none;
   width: 100%;
   font-family: Arial, sans-serif;
   align-items: center;
-  align-self: stretch; 
+  align-self: stretch;
+  padding-left: 20px;
 
   /*min-height: 0;*/
 }
 
+.new-todo:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+.new-todo:hover {
+  background: #ddd;
+}
+
+
 .checkbox {
-  
+
 }
 
 .todo-text {
  flex: 4;
  cursor: pointer;
+}
+
+.todo-text.checked {
+  text-decoration: line-through;
 }
 
 .delete-todos-button {
@@ -199,6 +224,7 @@ li {
   flex-flow: row wrap;
   justify-content: space-around;
   height: auto;
+  max-width: inherit;
 }
 
 #container2 div {
@@ -224,17 +250,21 @@ li {
   align-self: center;
 }
 
-.list-wrapper {
+.new-list-item-wrapper {
   display: flex;
   flex: 0 0 auto;
   background-color: purple;
   max-height: inherit;
-  margin: 3px; 
+  max-width: inherit;
+  margin: 0;
+  padding: 0;
   justify-content: flex-start;
   align-self: flex-start;
   align-items: flex-start;
+}
 
- 
+.new-list-ul {
+
 }
 
 .new-list-input {
@@ -242,7 +272,7 @@ li {
   border: none;
   font-size: 20px;
   width: 100%;
-  
+
 }
 
 .container3-header {
@@ -301,9 +331,9 @@ li {
   border: none;
   font-size: 20px;
   flex: 2;
-  
+
 }
- 
+
 }*/
 
 
