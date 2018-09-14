@@ -107,17 +107,16 @@ img {
 .this-week-wrapper {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 90%;
   height: 75%;
   min-height: 0;
-  border: 1px solid gray;
   align-self: center;
 }
 
 .this-week-header {
   display: flex;
   flex-flow: column nowrap;
-  background-color: gray;
+  background-color: #999;
   height: auto;
   width: auto;
   justify-content: center;
@@ -303,6 +302,16 @@ img {
   background: #ddd;
 }
 
+.replace-todo-input {
+  flex: 3;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+}
+
+.replaced-todo {
+  flex: 2;
+}
+
 
 .checkbox {
 
@@ -316,9 +325,24 @@ img {
 
 .delete-todos-button {
   width: 50px;
-  margin: 10px;
-  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 2px;
   cursor: pointer;
+  background: white;
+  border: .5px solid lightgray;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+
+}
+.edit-todos-button {
+  width: 35px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 3px;
+  cursor: pointer;
+  background: white;
+  border: .5px solid lightgray;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 
 }
 
@@ -376,7 +400,20 @@ img {
   max-width: inherit;
 }
 
-.life-list1 {
+.add-new-list-wrapper {
+  margin: 15px;
+}
+
+.add-new-list-button,
+.add-new-list-input {
+  padding: 8px;
+  font-size: 14px;
+}
+
+.life-list1,
+.life-list2,
+.life-list3,
+.new-list-created {
   display: flex;
   flex-flow: column nowrap;
   justify-content: stretch;
@@ -387,26 +424,29 @@ img {
   margin: 40px;
 }
 
-.life-list2 {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: stretch;
-  align-items: stretch;
+.new-list-created-input {
   background-color: white;
-  height: 250px;
-  width: 250px;
-  margin: 40px;
+  border: none;
+  font-size: 17px;
+  width: 100%;
+  color: black;
+  padding: 7px;
+  margin: 0;
 }
 
-.life-list3 {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: stretch;
-  align-items: stretch;
-  background-color: white;
-  height: 250px;
-  width: 250px;
-  margin: 40px;
+.new-list-title {
+  margin: 5px;
+  padding: 10px;
+  text-align: center;
+
+}
+
+.new-list-title-text {
+  font-family: Arial Helvetica sans-serif;
+  font-weight: bold;
+  align-self: center;
+  border-bottom: 2px black solid;
+  padding: 5px;
 }
 
 /*#container2 div {
@@ -423,10 +463,11 @@ img {
 
 #container2 div h4 {
   margin: 5px;
-  padding: 10px;
+  padding: 5px;
   text-align: center;
   border-bottom: 2px black solid;
   align-self: center;
+  font-family: Arial Helvetica sans-serif;
 }
 
 .life-list-wrapper {
@@ -454,13 +495,11 @@ img {
 .new-list-input {
   background-color: white;
   border: none;
-  font-size: 20px;
+  font-size: 17px;
   width: 100%;
   color: black;
-  padding: 10px;
+  padding: 7px;
   margin: 0;
-
-
 }
 
 .new-list-item {

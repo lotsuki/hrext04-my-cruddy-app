@@ -7,6 +7,16 @@
 $(document).ready(function() {
   //todo list
 
+  // $("body").droppable({
+  //   drop: function (event, ui) {
+  //     if ($("#bdy img").length == 0) {
+  //       $("#bdy").html("");
+  //     }
+  //     ui.draggable.addClass("dropped");
+  //       $("#bdy").append(ui.draggable);
+  //     }
+  // });
+
   var date = new Date().toString().slice(0, 15)
   $(".date").append(date)
 
@@ -20,14 +30,20 @@ $(document).ready(function() {
       }
        // '<input type="checkbox" class="checkbox">'
         localStorage.setItem(inputKey, addTodoText);
-        let newLi = '<li class="new-todo" data-storage-key="' + inputKey + '"><span class="todo-text">' + addTodoText + '</span><button type="button" class="delete-todos-button">Delete</button></li>';
+        let newLi = '<li class="new-todo" data-storage-key="' + inputKey + '"><span class="todo-text">' + addTodoText + '</span><button type="button" class="delete-todos-button">Delete</button><button type="button" class="edit-todos-button">Edit</button></li>';
 
         if($(".new-todo .todo-text").css("text-decoration-line") == "line-through") {
+          console.log($(".new-todo .todo-text").css("text-decoration-line"))
           var closestLi = $(".todo-text").closest("li")
-          $("new-todo").insertBefore(closestLi);
+          $(".new-todo").insertBefore(closestLi);
           return;
         }
           $(".todo-list-items").append(newLi);
+          // if($(".new-todo .todo-text").css("text-decoration-line") === "line-through") {
+          //   var linedLi = $(this).parent().parent().siblings(".wrapper").children()
+          //   console.log(linedLi)
+          //   $(".todo-list-items").append($(this))
+          // }
 
         localStorage.removeItem($(".todo-list-input").val());
         $(".todo-list-input").val("");
@@ -37,6 +53,8 @@ $(document).ready(function() {
          $(".todo-list-items").sortable();
          $(".todo-list-items").disableSelection();
        });
+
+       if($(".new-todo"))
 
   $(".delete-todos-button").unbind().click(function() {
     var confirmDelete = confirm("Delete Item?")
@@ -62,6 +80,29 @@ $(document).ready(function() {
 
         return setTimeout(moveToBottom, 500);
     });
+
+  // $(".todo-text").on("click", function() {
+
+  //   let savedTextDiv = $(this)
+
+  //     function replaceTodo() {
+  //       $(savedTextDiv).replaceWith('<input type="text" class="replace-todo-input">');
+  //       $(".replace-todo-input").on("keypress", function(event) {
+  //     var savedInput = $(this)
+  //     let replaceInputVal = '<span class="todo-text">' + $(this).val() + '</span>'
+  //      if(event.which === 13) {
+  //        if($(replaceInputVal) === "") {
+  //          $(savedInput).replaceWith(savedTextDiv);
+  //          return;
+  //        }
+  //         $(savedInput).replaceWith(replaceInputVal);
+  //         return;
+  //      }
+  //     });
+  //     }
+
+  //     setTimeout(replaceTodo, 300)
+  // });
   });
 
   // $(".calendar").datepicker({
@@ -168,6 +209,7 @@ $(document).ready(function() {
           $(function() {
             $(".new-list-ul").sortable();
             $(".new-list-ul").disableSelection();
+
           });
         }
     $(".delete-list-item-button").unbind().click(function() {
@@ -197,6 +239,32 @@ $(document).ready(function() {
     });
     });
   });
+
+  $(".add-new-list-button").on("click", function() {
+    let addNewListText = $(this).siblings().val();
+    let newInputKey = 'new list';
+
+    if(addNewListText === "") {
+      return;
+    }
+      localStorage.setItem(newInputKey, addNewListText);
+      let newDiv = '<div class="new-list-title" data-storage-key="' + newInputKey + '"><span class="new-list-title-text">' + addNewListText + '</div>';
+      let newList = '<div class="new-list-created"><input type="text" class="new-list-created-input" placeholder="add item..."></div>'
+
+      $("#container2").append(newList);
+      $(".new-list-created").prepend(newDiv); //prepend to new list
+
+      localStorage.removeItem($(this).siblings().val());;
+      $(this).siblings().val("");
+
+
+  });
+
+  //when add list button clicked
+    //if there is no text in list title, return fucntion
+    //else, add new list
+
+
 });//document.ready end
 
 $(document).ready(function() {
