@@ -18,7 +18,7 @@ $(document).ready(function() {
   // });
 
   var date = new Date().toString().slice(0, 15)
-  $(".date").append(date)
+  $(".date-text").append(date)
 
   $(".todo-list-input").on("keypress", function(event) {
     if(event.which === 13) {
@@ -33,17 +33,12 @@ $(document).ready(function() {
         let newLi = '<li class="new-todo" data-storage-key="' + inputKey + '"><span class="todo-text">' + addTodoText + '</span><button type="button" class="delete-todos-button">Delete</button><button type="button" class="edit-todos-button">Edit</button></li>';
 
         if($(".new-todo .todo-text").css("text-decoration-line") == "line-through") {
-          console.log($(".new-todo .todo-text").css("text-decoration-line"))
           var closestLi = $(".todo-text").closest("li")
           $(".new-todo").insertBefore(closestLi);
           return;
         }
           $(".todo-list-items").append(newLi);
-          // if($(".new-todo .todo-text").css("text-decoration-line") === "line-through") {
-          //   var linedLi = $(this).parent().parent().siblings(".wrapper").children()
-          //   console.log(linedLi)
-          //   $(".todo-list-items").append($(this))
-          // }
+
 
         localStorage.removeItem($(".todo-list-input").val());
         $(".todo-list-input").val("");
@@ -113,6 +108,8 @@ $(document).ready(function() {
   //   });
 });
 
+//THIS WEEK LIST
+
 $(document).ready(function() {
   //this week list
 
@@ -178,8 +175,9 @@ $(document).ready(function() {
   //   });
 });
 
+//NEW LISTS PLUS CREATED
+
 $(document).ready(function() {
-  //new lists
 
   $(".new-list-input").on("click", function() {
     var thisList = $(this).parent().siblings(".life-list-wrapper").children(".new-list-ul")
@@ -237,9 +235,12 @@ $(document).ready(function() {
           };
            return setTimeout(moveToBottom, 500);
     });
-    });
   });
+  });
+  //END NEW LISTS
 
+
+//START CREATED LISTS
   $(".add-new-list-button").on("click", function() {
     let addNewListText = $(this).siblings().val();
     let newInputKey = 'new list';
@@ -249,23 +250,91 @@ $(document).ready(function() {
     }
       localStorage.setItem(newInputKey, addNewListText);
       let newDiv = '<div class="new-list-title" data-storage-key="' + newInputKey + '"><span class="new-list-title-text">' + addNewListText + '</div>';
-      let newList = '<div class="new-list-created"><input type="text" class="new-list-created-input" placeholder="add item..."></div>'
+      let newList = '<div class="new-list-created">' + newDiv + '<div class="created-input-wrapper"><input type="text" class="new-list-created-input" placeholder="add item..."></div></div>'
+
 
       $("#container2").append(newList);
-      $(".new-list-created").prepend(newDiv); //prepend to new list
+      $(newList).prepend(newDiv); //prepend to new list
 
       localStorage.removeItem($(this).siblings().val());;
       $(this).siblings().val("");
 
 
-  });
+  //REDO THIS, CAN'T CREATE AN NEW UL EVERY CLICK
+      $(".new-list-created-input").unbind().click(function() {
+    var thisList = $(this).parent()
+    console.log(thisList)
+    var newUl = '<div class="created-ul-wrapper"><ul class="created-ul"></ul></div>';
+      $(".new-list-created").append(newUl);
+      $(function() {
+            $(newUl).sortable();
+            $(newUl).disableSelection();
 
-  //when add list button clicked
-    //if there is no text in list title, return fucntion
-    //else, add new list
+          });
+
+    $(this).on("keypress", function(event) {
+      if(event.which === 13) {
+        let addNewListText = $(this).val();
+        let newListInputKey = 'new list';
+
+        if(addNewListText === "") {
+          return;
+         }
+         // '<input type="checkbox" class="checkbox">'
+          localStorage.setItem(newListInputKey, addNewListText);
+          let newLi = '<li class="new-list-item" data-storage-key="' + newListInputKey + '"><span class="new-list-text">' + addNewListText + '</span><button type="button" class="delete-list-item-button">Delete</button></li>';
+
+          if($(".new-list-item .new-list-text").css("text-decoration-line") == "line-through") {
+            var closestLi = $(".new-list-text").closest("li")
+            $("new-list-item").insertBefore(closestLi);
+            return;
+          }
+            $(thisList).append(newLi)
+
+          localStorage.removeItem($(this).val());
+          $(this).val("");
 
 
+        }
+    $(".delete-list-item-button").unbind().click(function() {
+      var confirmDelete = confirm("Delete Item?");
+      if(confirmDelete) {
+        $(this).closest("li").fadeOut("slow", function(){
+          $(this).remove();
+          return;
+        });
+      }
+        return false;
+    });
+
+    $(".new-list-text").unbind().dblclick (function() { //unbind so function only urns once, look up unbind()
+      if($(this).css("text-decoration-line") == "line-through") {
+        $(this).css("text-decoration-line", "none");
+        return; //have to return function or else nothing happens
+      }
+        $(this).css("text-decoration-line", "line-through");
+        var thisLi = $(this).closest("li");
+        var thisUl = $(this).closest("ul");
+
+          function moveToBottom() {
+            $(thisLi).appendTo(thisUl)
+          };
+           return setTimeout(moveToBottom, 500);
+    });
+
+
+
+
+
+
+  //NEW LIST CREATED RESPONSIVE
+});
+});
+});
 });//document.ready end
+
+
+
 
 $(document).ready(function() {
 

@@ -21,33 +21,37 @@ body {
 }
 
 #title {
-  height: 40px;
+  height: 20px;
   margin-top: 15px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  margin-left: 50px;
   font-family: Chalkduster, fantasy;
   font-weight: lighter;
   font-size: 25px;
 }
 
+.image {
+  display: flex;
+  height: auto;
+  width: 100%;
+  justify-content: center;
+}
+
 img {
-  height: 40px;
-  width: 40px;
-  float: left;
-  margin: 15px;
-  margin-top: -5px;
+  height: 200px;
+  width: 180px;
 
 }
 
 
 #writing {
-  background-color: lightgreen;
-  height: 50px;
+  height: 400px;
   text-align: center;
-  color: white;
-  margin: 0;
+  color: black;
+  margin-top: 100px;
   padding: 20px;
-  font-size: 15px;
-  font-family: Arial, sans-serif;
+  font-size: 50px;
+  font-family: Caluna serif;
   font-weight: lighter;
 }
 
@@ -57,7 +61,8 @@ img {
   flex-flow: row nowrap;
   margin: 0;
   padding: 0;
-  height: 450px;
+  height: 700px;
+ /* background-color: #b3ff99;*/
 
   /*max-width: inherit;*/
 
@@ -77,11 +82,30 @@ img {
 
 .this-week-box {
   display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
   flex: 1;
   margin: 0;
   padding: 15px;
   max-height: inherit;
+}
+
+.date {
+  display: flex;
+  padding: 10px;
+  font-size: 18px;
+  align-self: flex-start;
+  font-family: Courier New;
+  height: 40px;
+  max-width: inherit;
+  border-bottom: 2px solid black;
+  border-top: 2px solid black;
+
+}
+
+.date-text {
+  justify-content: center;
+  margin-left: 20px;
 }
 
 .todo-list-box {
@@ -95,9 +119,10 @@ img {
 
 }
 
-.calendar-box {
+.giraffe-box {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex: 1;
   margin: 0;
   padding: 15px;
@@ -184,6 +209,7 @@ img {
   align-self: stretch;
   padding-left: 15px;
   cursor: pointer;
+  background-color: white;
   /*min-height: 0;*/
 }
 
@@ -222,7 +248,7 @@ img {
   flex-direction: column;
   margin: 0;
   padding: 10px;
-  background-color: gray;
+  background-color: #999;
   width: 350px;
 }
 
@@ -233,11 +259,7 @@ img {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.date {
-  padding: 5px;
-  font-size: 13px;
-  align-self: center;
-}
+
 
 
 .add-todos {
@@ -343,7 +365,17 @@ img {
   background: white;
   border: .5px solid lightgray;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
 
+
+.giraffe {
+ justify-content: center;
+ align-content: center;
+}
+
+.giraffe-img {
+  height: 350px;
+  width: 200px;
 }
 
 
@@ -389,15 +421,20 @@ img {
   text-align: center;
   padding: 50px;
   font-family: fantasy;
+  font-size: 40px;
+
 }
 
 #container2 {
+  background: url("dock.jpeg")  no-repeat;
+  background-size: 1200px 500px ;
   background-color: orange;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   height: auto;
   max-width: inherit;
+  padding: 50px;
 }
 
 .add-new-list-wrapper {
@@ -422,9 +459,12 @@ img {
   height: 250px;
   width: 250px;
   margin: 40px;
+  font-family: Arial Helvetica sans-serif;
 }
 
-.new-list-created-input {
+
+.new-list-created-input,
+.created-input-wrapper {
   background-color: white;
   border: none;
   font-size: 17px;
@@ -449,6 +489,8 @@ img {
   padding: 5px;
 }
 
+
+
 /*#container2 div {
 
   padding: 20px;
@@ -470,16 +512,18 @@ img {
   font-family: Arial Helvetica sans-serif;
 }
 
-.life-list-wrapper {
+.life-list-wrapper,
+.created-ul-wrapper {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
-  max-width: inherit;
+  width: 100%;
  /* margin: 0;
   padding: 0;*/
 }
 
-.new-list-ul {
+.new-list-ul,
+.created-ul {
   display: flex;
   flex-flow: column nowrap;
   margin: 0;
@@ -507,11 +551,29 @@ img {
   flex-flow: row nowrap;
   list-style: none;
   padding: 5px;
+  font-family: Arial Helvetica sans-serif;
+  font-size: 17px;
+  cursor: pointer;
+  width: 100%;
 
+
+}
+
+.new-list-title-text {
+  font-family: Arial Helvetica sans-serif;
+}
+
+.new-list-item:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+.new-list-item:hover {
+  background: #ddd;
 }
 
 .new-list-text {
   flex: 2;
+
 }
 
 .delete-list-item-button {
