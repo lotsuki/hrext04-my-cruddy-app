@@ -282,7 +282,7 @@ $(".new-list-created-input").unbind().click(function() {
 });
 });
 });
-});/
+});
 
 
 
