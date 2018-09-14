@@ -5,6 +5,10 @@
 
 
 $(document).ready(function() {
+  //todo list
+
+  var date = new Date().toString().slice(0, 15)
+  $(".date").append(date)
 
   $(".todo-list-input").on("keypress", function(event) {
     if(event.which === 13) {
@@ -30,14 +34,14 @@ $(document).ready(function() {
        }
 
        $(function() {
-         $( ".todo-list-items" ).sortable();
-         $( ".todo-list-items" ).disableSelection();
+         $(".todo-list-items").sortable();
+         $(".todo-list-items").disableSelection();
        });
 
   $(".delete-todos-button").unbind().click(function() {
     var confirmDelete = confirm("Delete Item?")
     if(confirmDelete) {
-      $(this).closest('li').fadeOut('slow', function(){
+      $(this).closest("li").fadeOut("slow", function(){
       $(this).remove();
         return;
       });
@@ -59,9 +63,82 @@ $(document).ready(function() {
         return setTimeout(moveToBottom, 500);
     });
   });
+
+  // $(".calendar").datepicker({
+  //       inline: true,
+  //       firstDay: 0,
+  //       showOtherMonths: true,
+  //       dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+  //   });
 });
 
 $(document).ready(function() {
+  //this week list
+
+  $(".this-week-input").on("keypress", function(event) {
+    if(event.which === 13) {
+      let addThisWeekInput = $(".this-week-input").val();
+      let thisWeekInputKey = 'this week';
+
+      if(addThisWeekInput === "") {
+        return;
+      }
+       // '<input type="checkbox" class="checkbox">'
+        localStorage.setItem(thisWeekInputKey, addThisWeekInput);
+        let newLi = '<li class="this-week-todo" data-storage-key="' + thisWeekInputKey + '"><span class="this-week-text">' + addThisWeekInput + '</span><button type="button" class="delete-this-week-button">Delete</button></li>';
+
+        if($(".this-week-todo .this-week-text").css("text-decoration-line") == "line-through") {
+          var closestLi = $(".this-week-text").closest("li")
+          $(".this-week-todo").insertBefore(closestLi);
+          return;
+        }
+          $(".this-week-list-ul").append(newLi);
+
+        localStorage.removeItem($("this-week-list-ul").val());
+        $(".this-week-input").val("");
+       }
+
+       $(function() {
+         $(".this-week-list-ul").sortable();
+         $(".this-week-list-ul").disableSelection();
+       });
+
+  $(".delete-this-week-button").unbind().click(function() {
+    var confirmDelete = confirm("Delete Item?")
+    if(confirmDelete) {
+      $(this).closest("li").fadeOut("slow", function(){
+      $(this).remove();
+        return;
+      });
+    }
+        return false;
+  });
+
+  $(".this-week-text").unbind().dblclick (function() { //unbind so function only urns once, look up unbind()
+    if($(this).css("text-decoration-line") == "line-through") {
+      $(this).css("text-decoration-line", "none");
+        return; //have to return function or else nothing happens
+    }
+      $(this).css("text-decoration-line", "line-through");
+      var thisLi = $(this).closest("li");
+        function moveToBottom() {
+          $(thisLi).appendTo(".this-week-list-ul");
+        };
+
+        return setTimeout(moveToBottom, 500);
+    });
+  });
+
+  // $(".calendar").datepicker({
+  //       inline: true,
+  //       firstDay: 0,
+  //       showOtherMonths: true,
+  //       dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+  //   });
+});
+
+$(document).ready(function() {
+  //new lists
 
   $(".new-list-input").on("click", function() {
     var thisList = $(this).parent().siblings(".life-list-wrapper").children(".new-list-ul")
